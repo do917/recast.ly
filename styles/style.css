@@ -38,6 +38,8 @@ body {
 }
 
 .video-player-details {
+  display: inline-block;
+  float: left;
   background: #fff;
   padding: 8px;
   border: 0;
@@ -46,6 +48,9 @@ body {
 }
 
 .video-list {
+  display: inline-block;
+  float: right;
+  display: block;
   background: #fff;
   padding: 8px;
   border: 0;

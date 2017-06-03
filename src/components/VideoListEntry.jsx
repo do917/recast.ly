@@ -12,7 +12,6 @@ var VideoListEntry = (props) => (
 
 var onVideoTitleClick = (video, parentState) => {
   parentState.setState({
-    videoList: true,
     videoPlayer: video
   });
 };

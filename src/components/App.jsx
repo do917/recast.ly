@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav parentState={this} />
         <div className="col-md-7">
           <VideoPlayer video={this.state.videoPlayer}/>
         </div>
@@ -22,7 +22,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState(searchYouTube(defaultSearch, ))
+    var appThis = this;
+    searchYouTube(defaultSearch, function(data) {
+      appThis.setState({
+        videoList: data,
+        videoPlayer: data[0]
+      });
+    });
   }
   
 }
@@ -31,18 +37,6 @@ var defaultVideo = {
   id: {
     videoId: ''
   },
-
-  snippet: {
-    title: '',
-    description: ''
-  }
-};
-
-var defaultVideoList = [{
-  id: {
-    videoId: ''
-  },
-
   snippet: {
     title: '',
     description: '',
@@ -52,7 +46,8 @@ var defaultVideoList = [{
       }
     }
   }
-}];
+};
+var defaultVideoList = [defaultVideo];
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined

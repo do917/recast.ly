@@ -10,10 +10,9 @@ var searchYouTube = (options, callback) => {
       videoEmbeddable: 'true',
       part: 'snippet'
     },
-    success: function(data) { callback({videoPlayer: data}); },
-    error: function() { console.log('error!!' ); }
+    success: function(data) { callback(data.items); },
+    error: function() { console.log('ERROR SEARCHING' ); }
   });
-
 };
 
 window.searchYouTube = searchYouTube;
