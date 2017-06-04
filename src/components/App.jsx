@@ -1,10 +1,17 @@
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    
     this.state = {
       videoList: defaultVideoList,
       videoPlayer: defaultVideo
     };
+    searchYouTube(defaultSearch, function() {
+      this.setState({
+        videoList: data,
+        videoPlayer: data[0]
+      });
+    });
   }
   
   render() {
@@ -23,6 +30,7 @@ class App extends React.Component {
 
   componentDidMount() {
     var appThis = this;
+    
     searchYouTube(defaultSearch, function(data) {
       appThis.setState({
         videoList: data,
@@ -32,6 +40,7 @@ class App extends React.Component {
   }
   
 }
+
 var defaultSearch = {query: '', max: 5, key: window.YOUTUBE_API_KEY };
 var defaultVideo = {
   id: {
